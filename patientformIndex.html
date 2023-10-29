@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="pf_styles.css">
+<script>
+    function showSpecifyInput(questionNumber) {
+      var specifyInput = document.getElementById("specifyInput" + questionNumber);
+      var selectBox = document.getElementById("medicalHistorySelect" + questionNumber);
+
+      specifyInput.style.display = (selectBox.value === "other") ? "block" : "none";
+    }
+  </script>
+<div class="form">
+<h1 id="title">Patient Form</h1>
+<p id="description">Please fill out this form with the required information.</p>
+<form id="survey-form" action = "pf_connection.php" onsubmit = "return validation()" method = "POST">
+  <fieldset>
+    <h3>Patient Information Record</h3>
+    <label for="name" id="name-label">Enter your name:<input required id="name" type="text" placeholder="name"/></label>
+
+    <label for="email" id="email-label">Enter your email:<input required id="email" type="email" placeholder="email"/></label>
+
+    <label for="number" id="number-label">Enter your number:<input id="number" type="number" placeholder="number" min="160000000" max="220000000"/></label>
+
+    <label for="religion" id="religion-label">Enter your religion:<input required id="religion" type="text" placeholder="religion"/></label>
+
+    <label for="nationality" id="nationality-label">Enter your nationality:<input required id="nationality" type="text" placeholder="nationality"/></label>
+
+    <label for="homeadd" id="homeadd-label">Enter your home address:<input required id="homeadd" type="text" placeholder="home address"/></label>
+
+    <label for="occupation" id="occupation-label">Enter your occupation:<input required id="occupation" type="text" placeholder="occupation"/></label>
+
+    <label for="dentalinsurance" id="dentalinsurance-label">Enter dental insurance:<input required id="dentalinsurance" type="text" placeholder="dental insurance"/></label>
+
+    <label for="date" id="date-label">Date:<input required id="date" type="datetime" placeholder="date"/></label>
+
+    <label for="pgname" id="pgname-label">For minors:<input id="pgname" type="text" placeholder="parent/guardian name"/></label>
+
+    <label for="pgoccupation" id="pgoccupation-label">Parent/Guardian Occupation:<input id="pgoccupation" type="text" placeholder="Parent/Guardian Occupation"/></label>
+
+    <label for="reason" id="reason-label">What is your reason for dental consultation?<input required id="reason" type="text" placeholder="reason for dental consultation"/></label>
+</fieldset>
+  <fieldset>
+    <label for="gender">
+    <select id="dropdown">
+      
+      <option>gender</option>
+      <option>male</option>
+      <option>female</option>
+      <option>other</option>
+    </select>
+    </label>
+  </fieldset>
+  <fieldset>
+    <h3>Dental History</h3>
+    <label for="prevDentist" id="prevDentist-label">Previous Dentist:<input required id="prevDentist" type="text" placeholder="previous dentist"/></label>
+
+    <label for="lastVisit" id="lastVisit-label">Last Dental Visit:<input required id="lastvisit" type="datetime" placeholder="date of last dental visit"/></label>
+</fieldset>
+<fieldset>
+    <h3>Medical History</h3>
+
+    <label for="medicalHistorySelect1">Question 1: Are you in good health?</label>
+    <select id="medicalHistorySelect1" name="medicalHistory1" onchange="showSpecifyInput(1)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+ 
+    <label for="medicalHistorySelect2">Question 2: Are you under medical treatment now?</label>
+    <select id="medicalHistorySelect2" name="medicalHistory2" onchange="showSpecifyInput(2)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+    <input type="text" id="specifyInput2" name="specify2" placeholder="If so, what is the condition being treated?" style="display: none;"><br>
+
+    <label for="medicalHistorySelect3">Question 3: Have you ever had serious illness or surgical operation?</label>
+    <select id="medicalHistorySelect3" name="medicalHistory3" onchange="showSpecifyInput(3)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+    <input type="text" id="specifyInput3" name="specify3" placeholder="If so, what illness or operation?" style="display: none;"><br>
+
+    <label for="medicalHistorySelect4">Question 4: Have you ever been hospitalized?</label>
+    <select id="medicalHistorySelect4" name="medicalHistory4" onchange="showSpecifyInput(4)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+    <input type="text" id="specifyInput4" name="specify4" placeholder="If so, when and why?" style="display: none;"><br>
+
+    <label for="medicalHistorySelect5">Question 5: Are you taking any prescription/non-prescription medicatin?</label>
+    <select id="medicalHistorySelect5" name="medicalHistory5" onchange="showSpecifyInput(5)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+    <input type="text" id="specifyInput5" name="specify5" placeholder="If so, please specify" style="display: none;"><br>
+
+    <label for="medicalHistorySelect6">Question 6: Do you use tobacco products?</label>
+    <select id="medicalHistorySelect6" name="medicalHistory6" onchange="showSpecifyInput(6)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+
+    <label for="medicalHistorySelect7">Question 7: Do you use alcohol, cocaine or other dangerous drugs?</label>
+    <select id="medicalHistorySelect7" name="medicalHistory7" onchange="showSpecifyInput(7)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+
+    <p class="inline">Question 8: Are you allergic to any of the following?</p>
+    <label>
+      <input type="checkbox" name="medicalHistory8[]" value="Local Anesthetic (eg: Lidocaine)" class="inline"> Local Anesthetic (eg: Lidocaine)
+    </label>
+    <label>
+      <input type="checkbox" name="medicalHistory8[]" value="Penicillin, Antibiotics" class="inline"> Penicillin, Antibiotics
+    </label>
+    <label>
+      <input type="checkbox" name="medicalHistory8[]" value="Solla Drugs" class="inline"> Solla Drugs
+    </label>
+    <label>
+      <input type="checkbox" name="medicalHistory8[]" value="Aspirin" class="inline"> Aspirin
+    </label>
+    <label>
+      <input type="checkbox" name="medicalHistory8[]" value="Latex" class="inline"> Latex
+    </label>
+    <label>
+      <input type="checkbox" name="medicalHistory8[]" value="other" class="inline"> Other
+    </label>
+    <br>
+    <input type="text" name="specify8" placeholder="If other, please specify"><br>
+    <label for="medicalHistorySelect9" id="medicalHistorySelect9-label">Bleeding Time:<input required id="medicalHistorySelect9" type="text" placeholder="bleeding time"/></label>
+
+    <h4>For Women Only:</h4>
+    <label for="medicalHistorySelect10">Question 10: Are you pregnant?</label>
+    <select id="medicalHistorySelect10" name="medicalHistory10" onchange="showSpecifyInput(10)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+
+    <label for="medicalHistorySelect11">Question 11: Are you nursing?</label>
+    <select id="medicalHistorySelect11" name="medicalHistory11" onchange="showSpecifyInput(11)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+
+    <label for="medicalHistorySelect12">Question 12: Are you taking birth control pills?</label>
+    <select id="medicalHistorySelect12" name="medicalHistory12" onchange="showSpecifyInput(12)">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select><br>
+
+    <label for="medicalHistorySelect13" id="medicalHistorySelect13-label">Blood Type:<input required id="medicalHistorySelect13" type="text" placeholder="blood type"/></label>
+    <label for="medicalHistorySelect14" id="medicalHistorySelect14-label">Blood Pressure:<input required id="medicalHistorySelect14" type="text" placeholder="blood pressure"/></label>
+  </fieldset>
+  <fieldset>
+    <label for="medicalHistorySelect15" class="inline">Question 15: Do you have or have you had any of the following? Check which apply.</label>
+    <label>
+      <input type="checkbox" name="medicalHistory15[]" class="inline" value="High Blood Pressure"> High Blood Pressure
+    </label>
+    <label>
+      <input type="checkbox" name="medicalHistory15[]" class="inline" value="Low Blood Pressure"> Low Blood Pressure
+    </label>
+    <label>
+        <input type="checkbox" name="medicalHistory15[]" class="inline" value="Epilepsy/ Convulsions"> Epilepsy/ Convulsions
+      </label>
+      <label>
+        <input type="checkbox" name="medicalHistory15[]" class="inline" value="AIDS or HIV Infection"> AIDS or HIV Infection
+      </label>
+      <label>
+        <input type="checkbox" name="medicalHistory15[]" class="inline" value="Sexually Transmitted Disease"> Sexually Transmitted Disease
+      </label>
+      <label>
+        <input type="checkbox" name="medicalHistory15[]" class="inline" value="Stomach Troubles/ Ulcer"> Stomach Troubles/ Ulcer
+      </label>
+      <label>
+        <input type="checkbox" name="medicalHistory15[]" class="inline valueFainting Seizure"> Fainting Seizure
+      </label>
+      <label>
+          <input type="checkbox" name="medicalHistory15[]" class="inline" value="Rapid Weight Loss"> Rapid Weight Loss
+        </label>
+        <label>
+          <input type="checkbox" name="medicalHistory15[]" class="inline" value="Radiation Therapy"> Radiation Therapy
+        </label>
+        <label>
+          <input type="checkbox" name="medicalHistory15[]" class="inline" value="Joint Replacement/ Implant"> Joint Replacement/ Implant
+        </label>
+      <label>
+        <label>
+            <input type="checkbox" name="medicalHistory15[]" class="inline" value="Heart Surgery"> Heart Surgery
+          </label>
+          <label>
+            <input type="checkbox" name="medicalHistory15[]" class="inline" value="Heart Attack"> Heart Attack
+          </label>
+          <label>
+              <input type="checkbox" name="medicalHistory15[]" class="inline" value="Thyroid Problem"> Thyroid Problem
+            </label>
+            <label>
+              <input type="checkbox" name="medicalHistory15[]" class="inline" value="Heart Disease"> Heart Disease
+            </label>
+            <label>
+              <input type="checkbox" name="medicalHistory15[]" class="inline" value="Heart Murmur"> Heart Murmur
+            </label>
+          <label>
+            <label>
+                <input type="checkbox" name="medicalHistory15[]" class="inline" value="Hepatitis/ Liver Disease"> Hepatitis/ Liver Disease
+              </label>
+              <label>
+                <input type="checkbox" name="medicalHistory15[]" class="inline" value="Rheumatic Fever"> Rheumatic Fever
+              </label>
+              <label>
+                  <input type="checkbox" name="medicalHistory15[]" class="inline" value="Hay Fever/ Allergies"> Hay Fever/ Allergies
+                </label>
+                <label>
+                  <input type="checkbox" name="medicalHistory15[]" class="inline" value="Respiratory Problems"> Respiratory Problems
+                </label>
+                <label>
+                  <input type="checkbox" name="medicalHistory15[]" class="inline" value="Hepatitis/ Jaundice"> Hepatitis/ Jaundice
+                </label>
+              <label>
+                <label>
+                    <input type="checkbox" name="medicalHistory15[]" class="inline" value="Tuberculosis"> Tuberculosis
+                  </label>
+                  <label>
+                    <input type="checkbox" name="medicalHistory15[]" class="inline" value="Swollen Ankles"> Swollen Ankles
+                  </label>
+                  <label>
+                      <input type="checkbox" name="medicalHistory15[]" class="inline" value="Kidney Disease"> Kidney Disease
+                    </label>
+                    <label>
+                      <input type="checkbox" name="medicalHistory15[]" class="inline" value="Diabetese"> Diabetese
+                    </label>
+                    <label>
+                      <input type="checkbox" name="medicalHistory15[]" class="inline" value="Chest Pains"> Chest Pains
+                    </label>
+                  <label>
+                    <label>
+                        <input type="checkbox" name="medicalHistory15[]" class="inline" value="Stroke"> Stroke
+                      </label>
+                      <label>
+                        <input type="checkbox" name="medicalHistory15[]" class="inline" value="Cancer/ Tumors"> Cancer/ Tumors
+                      </label>
+                      <label>
+                          <input type="checkbox" name="medicalHistory15[]" class="inline" value="Anemia"> Anemia
+                        </label>
+                        <label>
+                          <input type="checkbox" name="medicalHistory15[]" class="inline" value="Angina"> Angina
+                        </label>
+                        <label>
+                          <input type="checkbox" name="medicalHistory15[]" class="inline" value="Asthma"> Asthma
+                        </label>
+                      <label>
+                        <label>
+                            <input type="checkbox" name="medicalHistory15[]" class="inline" value="Emphysema"> Emphysema
+                          </label>
+                          <label>
+                            <input type="checkbox" name="medicalHistory15[]" class="inline" value="Bleeding Problems"> Bleeding Problems
+                          </label>
+                          <label>
+                              <input type="checkbox" name="medicalHistory15[]" class="inline" value="Blood Diseases"> Blood Diseases
+                            </label>
+                            <label>
+                              <input type="checkbox" name="medicalHistory15[]" class="inline" value="Head Injuries"> Head Injuries
+                            </label>
+                            <label>
+                              <input type="checkbox" name="medicalHistory15[]" class="inline" value="Arthritis/ Rheumatism"> Arthritis/ Rheumatism
+                            </label>
+                          <label>
+    <label>
+      <input type="checkbox" name="medicalHistory15" value="other" class="inline"> Other
+    </label>
+    <br>
+    <input type="text" name="specify15" placeholder="If other, please specify"><br>
+    </fieldset>
+    <textarea placeholder="comments" type="text"></textarea>
+    <button id="submit" type="submit">submit</button>
+  </form>
+  </div>
